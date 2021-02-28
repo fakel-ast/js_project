@@ -11,14 +11,31 @@ const personalMovieBD = {
     privat: false
 };
 
-let lastViewedFilm = prompt('Какой ваш последний просмотренный фильм?', ''),
-    scoreLastViewedFilm = prompt('Как вы его оцените?', '');
+let i = 0;
 
-personalMovieBD.movies[lastViewedFilm] = scoreLastViewedFilm;
+while (i < 2) {
+    let lastViewedFilm = prompt('Какой ваш последний просмотренный фильм?', ''),
+        scoreLastViewedFilm = prompt('Как вы его оцените?', '');
+    console.log(lastViewedFilm);
+    console.log(scoreLastViewedFilm);
 
-lastViewedFilm = prompt('Какой ваш последний просмотренный фильм?', '');
-scoreLastViewedFilm = prompt('Как вы его оцените?', '');
+    if (!lastViewedFilm || lastViewedFilm.length > 50 || !scoreLastViewedFilm) {
+        continue;
+    }
+    i++;
+    personalMovieBD.movies[lastViewedFilm] = scoreLastViewedFilm;
+}
 
-personalMovieBD.movies[lastViewedFilm] = scoreLastViewedFilm;
+if (personalMovieBD.count < 10) {
+    alert('Просмотрено довольно мало фильмов');
+} else if (personalMovieBD.count >= 10 && personalMovieBD.count < 30) {
+    alert('Вы класcический зритель');
+} else if (personalMovieBD.count >= 30) {
+    alert('Вы киноман');
+} else {
+    alert('Произошла ошибка');
+}
+
+
 
 console.log(personalMovieBD);
