@@ -63,6 +63,3 @@ const personalMovieBD = {
 
 let movies = Object.create(personalMovieBD);
 movies.start();
-movies.showMyBd();
-
-
